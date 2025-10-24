@@ -1,0 +1,31 @@
+# Put records
+aws kinesis put-record --stream-name YourStreamName --partition-key "PartitionKey" --data $(echo -n "Data Entry 1" | base64)
+aws kinesis put-record --stream-name YourStreamName --partition-key "PartitionKey2" --data $(echo -n "Data Entry 2" | base64)
+aws kinesis put-record --stream-name YourStreamName --partition-key "PartitionKey3" --data $(echo -n "Data Entry 3" | base64)
+
+
+
+# Get LATEST ShardIterator
+aws kinesis get-shard-iterator --stream-name YourStreamName --shard-id "shardId-000000000000" --shard-iterator-type LATEST
+
+# Paste ShardIterator:
+
+
+# Get Records after ShardIterator
+aws kinesis get-records --shard-iterator "YourShardIterator"
+
+
+# Get OLDEST ShardIterator
+aws kinesis get-shard-iterator --stream-name YourStreamName --shard-id "shardId-000000000000" --shard-iterator-type TRIM_HORIZON --query 'ShardIterator' --output text
+
+
+
+
+
+
+
+
+
+
+
+
